@@ -79,6 +79,7 @@ function double(array) {
   array.each do |element|
     copy_array.push(element)
   end
+
   copy_array.each do |element|
     array.push(element)
   end
@@ -90,17 +91,7 @@ function double(array) {
 
 ```
 function unique(array) {
-  sorted_array = []
-  unique_array = []
-  count = 0
 
-  sorted_array.each do |element|
-    count = count + 1
-    if element != sorted_array[count]
-      unique_array.push(element)
-    end
-  end
-  return unique_array
 }
 ```
 
@@ -123,12 +114,13 @@ function value_at_index(array, index) {
 
 ```
 function reverse(array) {
-  reversed_array = []
-  popped_element = nil
   count = 0
   array.each do |element|
     count = count + 1
   end
+
+  popped_element = nil
+  reversed_array = []
   while count != 0
     popped_element = array.pop()
     reversed_array.push(popped_element)
@@ -143,10 +135,11 @@ function reverse(array) {
 ```
 function last(array) {
   count = 0
-  last = nil
   array.each do |element|
     count = count + 1
   end
+
+  last = nil
   array.each do |element|
     count = count - 1
     if count == 0
@@ -174,27 +167,60 @@ function max(array) {
 }
 ```
 
-#13. Write a function that takes two arrays, and returns the count of the elements that have the same value in the same position. The given arrays will be of equal length.
+#### 13. Write a function that takes two arrays, and returns the count of the elements that have the same value in the same position. The given arrays will be of equal length.
 
 
 ```
-function count_same_as_value_position(array, array) {
+function count_same_as_value_position(array_a, array_b) {
+  length = 0
+  array_a.each do |element|
+    length = length + 1
+  end
 
+  index = 0
+  count = 0
+  while index <= length
+    if array_a[index] == array_b[index]
+      count = count + 1
+    end
+    index + 1
+  end
+  return count
 }
 ```
 
-# 14. Write a function that returns true if the array is sorted.
+#### 14. Write a function that returns true if the array is sorted.
 
 ```
 function is_sorted(array) {
-
+  count = 0
+  sorted = true
+  array.each do |element|
+    count = count + 1
+    if element > array[count]
+      sorted = false
+      break
+    end
+  end
+  return sorted
 }
 ```
 
-# 15. Write a function that returns every other element in an array.
+#### 15. Write a function that returns every other element in an array.
 
 ```
 function every_other(array) {
-
+  count = 0
+  index = 0
+  new_array = []
+  array.each do |element|
+    count = count + 1
+  end
+  while index <= count
+    element = array[index]
+    new_array.push(element)
+    index = index + 2
+  }
+  return new_array
 }
 ```
