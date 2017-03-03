@@ -87,11 +87,17 @@ function double(array) {
 }
 ```
 
-# 7. Write a function that returns a list of unique values in an array. Do not use a hash.
+#### 7. Write a function that returns a list of unique values in an array. Do not use a hash.
 
 ```
 function unique(array) {
-
+  unique_array = []
+  array.each do |element|
+    if !include(unique_array, element)
+      unique_array.push(element)
+    end
+  end
+  return unique_array
 }
 ```
 
@@ -151,19 +157,35 @@ function last(array) {
 }
 ```
 
-# 11. Write a function that returns the smallest value in an array.
+#### 11. Write a function that returns the smallest value in an array.
 
 ```
 function min(array) {
-
+  min = []
+  min.push(array.first)
+  array.each do |element|
+    if element < min.first
+      min.pop()
+      min.push(element)
+    end
+  end
+  return min.first
 }
 ```
 
-# 12. Write a function that returns the largest value in an array.
+#### 12. Write a function that returns the largest value in an array.
 
 ```
 function max(array) {
-
+  max = []
+  max.push(array.first)
+  array.each do |element|
+    if element > max.first
+      max.pop()
+      max.push(element)
+    end
+  end
+  return max.first
 }
 ```
 
