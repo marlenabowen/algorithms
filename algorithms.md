@@ -20,10 +20,8 @@ function include(array, value) {
   array.each do |element|
     if element == value
       result = true
-      break
     end
-    }
-  }
+  end
   return result
 }
 ```
@@ -58,16 +56,13 @@ function remove_value(array, value) {
 
 ```
 function index(array, value) {
-  count = 0
-  index = nil
+  index = 0
   array.each do |element|
-    count = count + 1
     if element == value
-      index = count -1
-      break
+      return index
     end
+    index = index + 1
   end
-  return index
 }
 ```
 
@@ -75,15 +70,15 @@ function index(array, value) {
 
 ```
 function double(array) {
-  copy_array = []
+  doubled_array = []
   array.each do |element|
-    copy_array.push(element)
+    doubled_array.push(element)
   end
 
-  copy_array.each do |element|
-    array.push(element)
+  array.each do |element|
+    doubled_array.push(element)
   end
-  return array
+  return doubled_array
 }
 ```
 
@@ -107,11 +102,10 @@ function unique(array) {
 function value_at_index(array, index) {
   count = 0
   array.each do |element|
-    count = count + 1
-    if count == index + 1
+    if count == index
       return element
-      break
     end
+    count = count + 1
   end
 }
 ```
@@ -120,17 +114,15 @@ function value_at_index(array, index) {
 
 ```
 function reverse(array) {
-  count = 0
-  array.each do |element|
-    count = count + 1
+  copy_array = []
+  array.each do |e|
+    copy_array.push(e)
   end
 
-  popped_element = nil
   reversed_array = []
-  while count != 0
-    popped_element = array.pop()
-    reversed_array.push(popped_element)
-    count = count - 1
+  array.each do |element|
+    value = copy_array.pop()
+    reversed_array.push(value)
   end
   return reversed_array
 }
@@ -144,16 +136,7 @@ function last(array) {
   array.each do |element|
     count = count + 1
   end
-
-  last = nil
-  array.each do |element|
-    count = count - 1
-    if count == 0
-      last = element
-      break
-    end
-  end
-  return last
+  return array[count-1]
 }
 ```
 
@@ -161,15 +144,13 @@ function last(array) {
 
 ```
 function min(array) {
-  min = []
-  min.push(array.first)
+  min = array.first
   array.each do |element|
-    if element < min.first
-      min.pop()
-      min.push(element)
+    if element < min
+      min = element
     end
   end
-  return min.first
+  return min
 }
 ```
 
@@ -177,15 +158,13 @@ function min(array) {
 
 ```
 function max(array) {
-  max = []
-  max.push(array.first)
+  max = array.first
   array.each do |element|
-    if element > max.first
-      max.pop()
-      max.push(element)
+    if element > max
+      max = element
     end
   end
-  return max.first
+  return max
 }
 ```
 
@@ -194,18 +173,13 @@ function max(array) {
 
 ```
 function count_same_as_value_position(array_a, array_b) {
-  length = 0
-  array_a.each do |element|
-    length = length + 1
-  end
-
   index = 0
   count = 0
-  while index <= length
-    if array_a[index] == array_b[index]
+  array_a.each do |element|
+    if element == array_b[index]
       count = count + 1
     end
-    index + 1
+    index = index + 1
   end
   return count
 }
@@ -215,14 +189,13 @@ function count_same_as_value_position(array_a, array_b) {
 
 ```
 function is_sorted(array) {
-  count = 0
-  sorted = true
+  index = 1
+  sorted = false
   array.each do |element|
-    count = count + 1
-    if element > array[count]
-      sorted = false
-      break
+    if element < array[index]
+      sorted = true
     end
+    index = index + 1
   end
   return sorted
 }
@@ -232,17 +205,14 @@ function is_sorted(array) {
 
 ```
 function every_other(array) {
-  count = 0
   index = 0
   new_array = []
   array.each do |element|
-    count = count + 1
+    if index % 2 == 0
+      new_array.push(element)
+    end
+    index = index + 1
   end
-  while index <= count
-    element = array[index]
-    new_array.push(element)
-    index = index + 2
-  }
   return new_array
 }
 ```
