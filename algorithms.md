@@ -4,8 +4,8 @@
 function count_of(array, value) {
   count = 0
   array.each do |element|
-  	if element == value
-  		count = count + 1
+    if element == value
+      count = count + 1
   	end
   end
   return count
@@ -132,11 +132,11 @@ function reverse(array) {
 
 ```
 function last(array) {
-  count = 0
+  index = 0
   array.each do |element|
-    count = count + 1
+    index = index + 1
   end
-  return array[count-1]
+  return array[index-1]
 }
 ```
 
