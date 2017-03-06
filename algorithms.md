@@ -189,15 +189,13 @@ function count_same_as_value_position(array_a, array_b) {
 
 ```
 function is_sorted(array) {
-  index = 1
-  sorted = false
   array.each do |element|
-    if element < array[index]
-      sorted = true
+    index = index(array, element)
+    if index != 0 && element <= array[index - 1]
+      return false
     end
-    index = index + 1
   end
-  return sorted
+  return true
 }
 ```
 
