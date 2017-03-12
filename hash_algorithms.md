@@ -111,8 +111,7 @@ function slice(hash, keys) {
 ```
 function delete(hash, keys) {
   keys.each do |key|
-      hash[key] = nil
-    end
+    hash[key] = nil
   end
 
   new_hash = {}
@@ -145,6 +144,7 @@ function sum_merge(hash_a, hash_b) {
       hash_b[key] += value
     else
       hash_b[key] = value
+    end
   end
   return hash_b
 }
