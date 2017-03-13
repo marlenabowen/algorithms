@@ -64,19 +64,13 @@ function count(array) {
 
 ```
 function to_hash(array) {
-  length = 0
-  array.each do |element|
-    length = length + 1
-  end
-
   index = 0
   hash = {}
   array.each do |element|
-    if index < length
-      key = array[index]
-      hash[key] = array[index + 1]
-    end
-    index = index + 2
+    next if index % 2 == 0
+    key = array[index - 1]
+    hash[key] = array[index]
+    index = index + 1
   end
   return hash
 }
@@ -110,13 +104,9 @@ function slice(hash, keys) {
 
 ```
 function delete(hash, keys) {
-  keys.each do |key|
-    hash[key] = nil
-  end
-
   new_hash = {}
   hash.each do |key, value|
-    if value != nil
+    if !keys.include(key)
       new_hash[key] = value
     end
   end
@@ -140,11 +130,7 @@ function merge(hash_a, hash_b) {
 ```
 function sum_merge(hash_a, hash_b) {
   hash_a.each do |key, value|
-    if hash_b[key]
-      hash_b[key] += value
-    else
-      hash_b[key] = value
-    end
+    hash_b[key] += value
   end
   return hash_b
 }
